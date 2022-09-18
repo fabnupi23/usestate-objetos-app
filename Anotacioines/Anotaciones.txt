@@ -1,1 +1,42 @@
-Documento plano para anotaciones
+*Lo primero que realizamos es la importación e implementación del useState, como valor inicial podemos pasarle un objeto vacio pero por el momento llamamos 
+un initialProduct:
+    const [product, setProduct] = useState(initialProduct);
+
+        es conveniente que este initialProduct no sea un producto vacio y si lo fuese deberiamos tomar varias consideraciones, entre ella que si esta vacio la aplicación
+        va a funcionar solo que el incoveniente se va a presentar cuando nosotros tengamos un objeto que tenga más de un nivel, con nivel me refiero que en la declaración
+        de la variable podemos acceder por ejemplo a una image que también fuese un objeto 
+
+*Declaramos fuera del codigo una variable const llamada initialProduct la cual va a ser un objeto con dos atributos, el title y description.
+
+* const updateProduct = () => {} se va a encargar de realizar la actualización de un producto.
+
+*...product este operador hace referencia a todo lo que tenia internamente el objeto product, en este caso seria titulo y descripción 
+
+*Para que sea  un estado variable un objeto se llama entre corchetes [property]: value, con esa variable property me sobre escribe dependiendo del objeto, si e title
+o description,  ejemplo:
+    
+    function ProductApp() {
+    const [product, setProduct] = useState(initialProduct);
+
+    const updateProduct = (property, value) => {
+        setProduct({
+            ...product,
+            [property]: value
+        })
+    }
+    
+  return (
+    <div>
+        <h1>{product.title}</h1>
+        <h1>{product.description}</h1>
+        <button onClick={() => updateProduct("title", "Nuevo titulo")}>Update</button>
+    </div>
+
+*Las propiedades del titulo pueden cambiar de title a product y nuevo producto, ejemplo:
+
+    <button onClick={() => updateProduct("product", "Nuevo producto")}>Update</button>
+
+*Ahora vamos a imprimir un json en pantalla <div>{JSON.stringify(product)}</div> utilizamos la función stringify, para imprimirlo de forma mas bonita para ello
+el JSON.stringify nos ofrece otros dos parametros el segundo que es un null casi no nos importa realmente y el tercero va a ser la cantidad de espacios que se 
+requieren para indendar, en este caso va a ser 2, por lo general se usa 2 o 4 ya que 0 sería dejarlo tal cual como está, el tag que debemos usar para que le de el 
+formato correcto es el <pre> <pre>{JSON.stringify(product, null, 2)}</pre>

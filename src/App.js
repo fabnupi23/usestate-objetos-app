@@ -1,11 +1,10 @@
 import React from 'react'
+import { ProductApp } from './ProductApp';
 
 function App() {
   return (
     <div>
-      <h1>
-        Esperando ejemplo de objeto con hooks
-      </h1>
+      <ProductApp/>
     </div>
   )
 }
